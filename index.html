@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K-PAB Natural MOXA Treatment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:   #93203D;
+      --pink1: #CB909F;
+      --pink2: #FAF5F7;
+      --pink3: #F1E2E5;
+      --white: #FFFFFF;
+      --dark:  #1A0A0F;
+      --text:  #3D1020;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--pink3);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--red);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--pink1); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { background: #7a1a32 !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--red) 0%, #6b1629 60%, #3d0d18 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; max-width: 800px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #f8d7df;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 em { font-style: normal; color: #f9c8d4; }
+    .hero-subtitle-kr {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--white);
+      color: var(--red);
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.6);
+      color: var(--white);
+      padding: 0.9rem 2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse { 0%,100%{opacity:0.5} 50%{opacity:1} }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title span { color: var(--red); }
+    .section-lead { font-size: 1.05rem; color: #6b3045; max-width: 600px; line-height: 1.8; }
+
+    /* ── WHAT IS MOXA ── */
+    .what { background: var(--pink2); }
+    .what-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .what-visual { position: relative; }
+    .what-card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 40px rgba(147,32,61,0.1);
+    }
+    .what-card-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .what-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 0.75rem;
+    }
+    .what-card p { color: #5a2535; line-height: 1.8; }
+    .what-card-float {
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+      background: var(--red);
+      color: var(--white);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(147,32,61,0.4);
+      line-height: 1.5;
+    }
+    .what-card-float strong {
+      display: block;
+      font-size: 1.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .what-text p { margin-bottom: 1rem; color: #4a1f2d; line-height: 1.9; }
+    .what-text .highlight-box {
+      background: var(--pink3);
+      border-left: 4px solid var(--red);
+      padding: 1rem 1.25rem;
+      border-radius: 0 12px 12px 0;
+      font-size: 0.95rem;
+      color: var(--text);
+      font-style: italic;
+      margin-top: 1.5rem;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--white); }
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .step-card {
+      background: var(--pink2);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .step-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(147,32,61,0.12); }
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--pink3);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .step-card h3 { font-size: 1.1rem; font-weight: 700; color: var(--red); margin-bottom: 0.75rem; }
+    .step-card p { font-size: 0.9rem; color: #5a2535; line-height: 1.7; }
+
+    /* ── BENEFITS ── */
+    .benefits { background: var(--pink2); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .benefit-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.75rem;
+      border-top: 4px solid var(--red);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(147,32,61,0.12); }
+    .benefit-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .benefit-card h3 { font-weight: 700; font-size: 1rem; color: var(--red); margin-bottom: 0.5rem; }
+    .benefit-card p { font-size: 0.875rem; color: #6b3045; line-height: 1.7; }
+
+    /* ══════════════════════════════════════
+       ── COURSE ──
+    ══════════════════════════════════════ */
+    .course { background: var(--red); }
+    .course .section-label { color: #f9c8d4; }
+    .course .section-title { color: var(--white); }
+    .course .section-title span { color: #f9c8d4; }
+    .course .section-lead { color: rgba(255,255,255,0.8); }
+
+    /* Course title row — title left, toggle right */
+    .course-title-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .course-title-left { flex: 1; min-width: 0; }
+    .lang-toggle {
+      display: inline-flex;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 4px;
+      gap: 2px;
+      position: relative;
+    }
+    .lang-btn {
+      position: relative;
+      z-index: 1;
+      padding: 0.4rem 1.1rem;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: color 0.25s;
+      font-family: 'Inter', sans-serif;
+    }
+    .lang-btn.active {
+      color: var(--red);
+    }
+    .lang-toggle-indicator {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      height: calc(100% - 8px);
+      border-radius: 999px;
+      background: var(--white);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+
+    /* Language content switching */
+    .t-ko, .t-en {
+      transition: opacity 0.3s ease;
+    }
+    .t-en { display: none; opacity: 0; }
+    .t-ko { display: block; opacity: 1; }
+
+    /* When English is active */
+    .lang-en .t-ko { display: none; opacity: 0; }
+    .lang-en .t-en { display: block; opacity: 1; }
+
+    /* For inline spans (week tags, section labels) */
+    span.t-ko, span.t-en { display: inline; }
+    .lang-en span.t-ko { display: none; }
+    .lang-en span.t-en { display: inline; }
+
+    /* Crossfade animation on switch */
+    .weeks-grid { position: relative; }
+    .week-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .week-card:hover { background: rgba(255,255,255,0.13); }
+
+    .course-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .course-meta { display: flex; gap: 1rem; flex-wrap: nowrap; }
+    .course-meta-item {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+      padding: 0.75rem 1.25rem;
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .course-meta-item strong {
+      display: block;
+      font-size: 1.3rem;
+      font-family: 'Playfair Display', serif;
+    }
+    .course-goal {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    .course-goal h3 {
+      color: #f9c8d4;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .course-goal ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .course-goal li {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .course-goal li::before { content: '✓'; color: #f9c8d4; font-weight: 700; flex-shrink: 0; }
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .week-tag { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #f9c8d4; margin-bottom: 0.5rem; }
+    .week-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+    .week-section { margin-bottom: 1rem; }
+    .week-section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #f9c8d4;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .week-items { list-style: none; }
+    .week-items li {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.85);
+      padding: 0.25rem 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .week-items li::before { content: '·'; color: var(--pink1); font-weight: 700; flex-shrink: 0; }
+    .week-hw {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-top: 1rem;
+    }
+    .week-hw span { font-size: 0.75rem; font-weight: 700; color: #f9c8d4; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.25rem; }
+    .week-hw p { font-size: 0.85rem; color: rgba(255,255,255,0.85); }
+
+    /* ── CERTIFICATION ── */
+    .cert { background: var(--pink3); }
+    .cert-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 3rem;
+    }
+    .cert-requirements { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .cert-requirements li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--white);
+      padding: 1rem 1.25rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(147,32,61,0.07);
+    }
+    .cert-check {
+      width: 36px;
+      height: 36px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .cert-requirements li span { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+    .cert-badge-wrap { display: flex; justify-content: center; }
+    .cert-badge {
+      background: linear-gradient(135deg, var(--red) 0%, #6b1629 100%);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 16px 48px rgba(147,32,61,0.3);
+    }
+    .cert-badge .badge-icon { font-size: 4rem; margin-bottom: 1rem; }
+    .cert-badge h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; color: #f9c8d4; }
+    .cert-badge p { font-size: 1.2rem; font-weight: 700; line-height: 1.4; }
+    .cert-badge .next-level { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+    .cert-badge .next-level strong { display: block; color: var(--white); font-size: 0.9rem; margin-top: 0.25rem; }
+
+    /* ── CTA ── */
+    .cta { background: var(--white); text-align: center; padding: 6rem 2rem; }
+    .cta-inner { max-width: 680px; margin: 0 auto; }
+    .cta .section-title { margin-bottom: 1rem; }
+    .cta-lead { font-size: 1.05rem; color: #6b3045; margin-bottom: 2.5rem; line-height: 1.8; }
+    .cta-form { display: flex; gap: 0.75rem; max-width: 480px; margin: 0 auto 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .cta-form input {
+      flex: 1;
+      min-width: 220px;
+      border: 2px solid var(--pink3);
+      border-radius: 999px;
+      padding: 0.85rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .cta-form input:focus { border-color: var(--red); }
+    .cta-form input::placeholder { color: #bba0a8; }
+    .btn-red {
+      background: var(--red);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .btn-red:hover { background: #7a1a32; transform: translateY(-1px); }
+    .cta-note { font-size: 0.8rem; color: var(--pink1); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2.5rem 2rem;
+      font-size: 0.85rem;
+    }
+    footer strong { color: var(--white); }
+    footer a { color: var(--pink1); text-decoration: none; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--white); margin-bottom: 0.5rem; }
+    .footer-logo span { color: var(--pink1); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .what-grid, .cert-grid { grid-template-columns: 1fr; }
+      .weeks-grid { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; }
+      .what-card-float { position: static; margin-top: 1rem; }
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .course-goal ul { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 1.25rem; }
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">K<span>-PAB</span></a>
+    <ul class="nav-links">
+      <li><a href="#what">What is MOXA</a></li>
+      <li><a href="#how">How it Works</a></li>
+      <li><a href="#benefits">Benefits</a></li>
+      <li><a href="#course">K-MOXA 101</a></li>
+      <li><a href="#enroll" class="nav-cta">Enroll Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">K-PAB Natural MOXA Treatment</div>
+      <h1>Heal with the<br/><em>Ancient Power</em><br/>of MOXA</h1>
+      <p class="hero-subtitle-kr">케이팹 자연 뜸 테라피 · 배우고, 치유하고, 나누세요</p>
+      <p class="hero-desc">
+        Experience and learn Korea's time-honored moxibustion therapy — a Traditional Korean Medicine practice that warms the body, restores energy, and heals from within.
+      </p>
+      <div class="hero-buttons">
+        <a href="#course" class="btn-primary">Explore K-MOXA 101</a>
+        <a href="#what" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      SCROLL
+    </div>
+  </section>
+
+  <!-- WHAT IS MOXA -->
+  <section class="what" id="what">
+    <div class="container">
+      <div class="section-label">What is MOXA</div>
+      <h2 class="section-title">The Ancient Art of<br/><span>Moxibustion</span></h2>
+      <p class="section-lead">Moxibustion (뜸, moxa therapy) is a Traditional Korean &amp; Chinese Medicine technique with over 2,000 years of history.</p>
+      <div class="what-grid">
+        <div class="what-visual">
+          <div class="what-card">
+            <div class="what-card-icon">🌿</div>
+            <h3>Dried Mugwort · 쑥</h3>
+            <p>Moxa is made from <strong>Artemisia argyi</strong> — dried and aged mugwort — which is burned slowly near or on acupuncture points to deliver therapeutic warmth deep into the body's meridian channels.</p>
+          </div>
+          <div class="what-card-float">
+            <strong>2,000+</strong>
+            Years of<br/>Traditional Use
+          </div>
+        </div>
+        <div class="what-text">
+          <p>In Traditional Korean Medicine, the body's vital energy — <strong>기 (Qi/Ki)</strong> — flows through invisible pathways called meridians. When these pathways become blocked or imbalanced, illness and pain follow.</p>
+          <p>Moxibustion works by applying gentle, penetrating heat at specific acupuncture points. This warmth stimulates the flow of Qi and blood, dissolves stagnation, and restores the body's natural healing capacity.</p>
+          <p>Unlike acupuncture, moxa does not require needles. Its gentle heat is accessible, safe for home use, and especially effective for cold, deficient, or chronic conditions.</p>
+          <div class="highlight-box">
+            "Inspired by the teachings of <strong>김남수</strong>, K-PAB brings authentic Korean moxibustion practice to the modern world — empowering families to heal themselves and care for others."
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="container">
+      <div class="section-label">How it Works</div>
+      <h2 class="section-title">Three Steps to<br/><span>Healing</span></h2>
+      <p class="section-lead">Moxibustion activates the body's own healing system through a simple, time-tested process.</p>
+      <div class="how-steps">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Locate the Point · 혈자리 찾기</h3>
+          <p>Specific acupuncture points — such as <em>Jok-sam-ri (足三里)</em> or <em>Gi-hae (氣海)</em> — are identified on the body. Each point connects to meridian pathways that influence different organs and functions.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Apply the Heat · 열 자극</h3>
+          <p>A small cone or stick of dried mugwort is lit and held near the skin (indirect moxa) or placed directly on the point (direct moxa). The warmth penetrates deep into tissue, stimulating circulation and Qi flow.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Restore Balance · 균형 회복</h3>
+          <p>Regular sessions dissolve blockages, warm cold areas, strengthen deficient energy, and support the body's natural immune and healing responses — leading to lasting improvement in health and vitality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section class="benefits" id="benefits">
+    <div class="container">
+      <div class="section-label">Why MOXA</div>
+      <h2 class="section-title">Conditions MOXA<br/><span>Helps</span></h2>
+      <p class="section-lead">Clinical tradition and modern research support moxibustion's effectiveness across a wide range of conditions.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🦴</div>
+          <h3>Pain Management</h3>
+          <p>Knee pain, lower back pain, shoulder and wrist pain, arthritis, plantar fasciitis, and joint stiffness respond well to targeted moxa protocols.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🛡️</div>
+          <h3>Immune Boost</h3>
+          <p>Regular moxa on key immune points strengthens the body's defensive energy (衛氣), reducing frequency of colds and chronic illness.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌡️</div>
+          <h3>Cold &amp; Deficiency</h3>
+          <p>Ideal for cold extremities, fatigue, low vitality, and yang deficiency — moxa warms the deepest channels where cold settles.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🥢</div>
+          <h3>Digestive Health</h3>
+          <p>Points like Zhong-wan (中脘) and Zu-san-li (足三里) strengthen digestive function, relieve bloating, and improve nutrient absorption.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🧓</div>
+          <h3>Senior Care</h3>
+          <p>Gentle and needle-free — moxa is ideal for elderly care. It builds leg strength, prevents falls, and supports healthy aging and mobility.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">👨‍👩‍👧</div>
+          <h3>Family Self-Care</h3>
+          <p>Once learned, moxa can be safely practiced at home for the whole family — making it a powerful tool for independent health management.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       COURSE — with KO/EN toggle
+  ════════════════════════════════════ -->
+  <section class="course" id="course">
+    <div class="container">
+
+      <!-- Section header -->
+      <div class="course-title-row">
+        <div class="course-title-left">
+          <div class="section-label">Official Curriculum</div>
+          <h2 class="section-title">🎓 K-MOXA <span>101</span></h2>
+        </div>
+        <!-- ── Language Toggle ── -->
+        <div class="lang-toggle" id="langToggle">
+          <div class="lang-toggle-indicator" id="langIndicator"></div>
+          <button class="lang-btn active" id="btnKo" onclick="setLang('ko')">한국어</button>
+          <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+        </div>
+      </div>
+      <p class="section-lead" style="margin-top:1rem">
+        <span class="t-ko">Foundation Course — 총 8시간 / 4주 과정<br/>Inspired by the teachings of <strong style="color:#f9c8d4">김남수</strong></span>
+        <span class="t-en">Foundation Course — 8 Hours Total / 4-Week Program<br/>Inspired by the teachings of <strong style="color:#f9c8d4">Kim Nam-su</strong></span>
+      </p>
+
+      <!-- Meta stats -->
+      <div class="course-header" style="margin-top:2rem">
+        <div class="course-meta">
+          <div class="course-meta-item"><span class="t-ko"><strong>4주</strong> 과정</span><span class="t-en"><strong>4</strong> Weeks</span></div>
+          <div class="course-meta-item"><span class="t-ko"><strong>2시간</strong> / 회</span><span class="t-en"><strong>2 hrs</strong> / Session</span></div>
+          <div class="course-meta-item"><span class="t-ko"><strong>8시간</strong> 총 시간</span><span class="t-en"><strong>8 hrs</strong> Total</span></div>
+          <div class="course-meta-item"><span class="t-ko"><strong>주 1회</strong> 수업</span><span class="t-en"><strong>Once</strong> Weekly</span></div>
+        </div>
+      </div>
+
+      <!-- Goals -->
+      <div class="course-goal">
+        <h3>📘 <span class="t-ko">과정 목표</span><span class="t-en">Course Goals</span></h3>
+        <ul>
+          <li>
+            <span class="t-ko">한국 전통 뜸의 철학과 원리 이해</span>
+            <span class="t-en">Understand the philosophy and principles of traditional Korean moxibustion</span>
+          </li>
+          <li>
+            <span class="t-ko">안전한 시술 능력 습득</span>
+            <span class="t-en">Develop safe and effective practice skills</span>
+          </li>
+          <li>
+            <span class="t-ko">기본 통증 관리 적용</span>
+            <span class="t-en">Apply basic pain management protocols</span>
+          </li>
+          <li>
+            <span class="t-ko">가족 및 시니어 케어 가능 수준 도달</span>
+            <span class="t-en">Reach a level to care for family and seniors</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Week cards -->
+      <div class="weeks-grid">
+
+        <!-- ── WEEK 1 ── -->
+        <div class="week-card">
+          <div class="week-tag">
+            <span class="t-ko">Week 1 · 2시간</span>
+            <span class="t-en">Week 1 · 2 Hours</span>
+          </div>
+          <h3>
+            <span class="t-ko">🔥 전통 한국 뜸의 이해 &amp; 안전 기초</span>
+            <span class="t-en">🔥 Understanding Traditional Korean Moxibustion &amp; Safety Basics</span>
+          </h3>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">이론 60분</span>
+              <span class="t-en">Theory — 60 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">K-MOXA 철학과 비전</span><span class="t-en">K-MOXA Philosophy &amp; Vision</span></li>
+              <li><span class="t-ko">전통 한국 뜸의 역사</span><span class="t-en">History of Traditional Korean Moxibustion</span></li>
+              <li><span class="t-ko">기혈 순환과 열 자극 원리</span><span class="t-en">Principles of Qi-Blood Circulation &amp; Heat Stimulation</span></li>
+              <li><span class="t-ko">직접구 vs 간접구 차이</span><span class="t-en">Direct vs. Indirect Moxibustion</span></li>
+              <li><span class="t-ko">안전 수칙 (화상 예방, 금기사항)</span><span class="t-en">Safety Guidelines (burn prevention, contraindications)</span></li>
+            </ul>
+          </div>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">실습 60분</span>
+              <span class="t-en">Practice — 60 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">기본 뜸 도구 설명</span><span class="t-en">Introduction to basic moxa tools</span></li>
+              <li><span class="t-ko">뜸 크기 만들기</span><span class="t-en">Making moxa cones</span></li>
+              <li><span class="t-ko">혈자리 찾기 — 중완 · 기해 · 족삼리</span><span class="t-en">Locating key points — Jungwan · Gihae · Joksamri</span></li>
+              <li><span class="t-ko">시범 후 상호 실습</span><span class="t-en">Demonstration then partner practice</span></li>
+            </ul>
+          </div>
+
+          <div class="week-hw">
+            <span>🎯 <span class="t-ko">숙제</span><span class="t-en">Homework</span></span>
+            <p>
+              <span class="t-ko">족삼리 3일 자가 실습</span>
+              <span class="t-en">Self-practice on Joksamri for 3 days</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── WEEK 2 ── -->
+        <div class="week-card">
+          <div class="week-tag">
+            <span class="t-ko">Week 2 · 2시간</span>
+            <span class="t-en">Week 2 · 2 Hours</span>
+          </div>
+          <h3>
+            <span class="t-ko">🔥 통증 관리 기초 적용</span>
+            <span class="t-en">🔥 Basic Pain Management Application</span>
+          </h3>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">이론 40분</span>
+              <span class="t-en">Theory — 40 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">급성 vs 만성 통증 구분</span><span class="t-en">Distinguishing acute vs. chronic pain</span></li>
+              <li><span class="t-ko">냉증 / 허증 개념</span><span class="t-en">Cold syndrome &amp; deficiency syndrome concepts</span></li>
+              <li><span class="t-ko">노인 근력 저하 원리</span><span class="t-en">Principles of muscle weakness in the elderly</span></li>
+            </ul>
+          </div>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">실습 80분</span>
+              <span class="t-en">Practice — 80 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">무릎 통증 기본 프로토콜</span><span class="t-en">Basic protocol for knee pain</span></li>
+              <li><span class="t-ko">허리 통증 기본 혈자리</span><span class="t-en">Key acupuncture points for lower back pain</span></li>
+              <li><span class="t-ko">손목 / 어깨 통증 기본점</span><span class="t-en">Basic points for wrist &amp; shoulder pain</span></li>
+              <li><span class="t-ko">1인 1케이스 실습</span><span class="t-en">1-on-1 case practice</span></li>
+            </ul>
+          </div>
+
+          <div class="week-hw">
+            <span>🎯 <span class="t-ko">숙제</span><span class="t-en">Homework</span></span>
+            <p>
+              <span class="t-ko">가족 1명 적용 후 기록 작성</span>
+              <span class="t-en">Apply on one family member &amp; write a report</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── WEEK 3 ── -->
+        <div class="week-card">
+          <div class="week-tag">
+            <span class="t-ko">Week 3 · 2시간</span>
+            <span class="t-en">Week 3 · 2 Hours</span>
+          </div>
+          <h3>
+            <span class="t-ko">🔥 시니어 케어 &amp; 예방 뜸</span>
+            <span class="t-en">🔥 Senior Care &amp; Preventive Moxibustion</span>
+          </h3>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">이론 40분</span>
+              <span class="t-en">Theory — 40 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">노인 다리 힘 약화 원리</span><span class="t-en">Understanding leg weakness in the elderly</span></li>
+              <li><span class="t-ko">소화기 강화 뜸</span><span class="t-en">Digestive strengthening with moxa</span></li>
+              <li><span class="t-ko">면역 강화 개념</span><span class="t-en">Concept of immune enhancement</span></li>
+              <li><span class="t-ko">백회 사용 시 주의점</span><span class="t-en">Precautions when using Baekhoe (百會)</span></li>
+            </ul>
+          </div>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">실습 80분</span>
+              <span class="t-en">Practice — 80 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">다리 힘 강화 프로토콜 — 족삼리 · 음릉천</span><span class="t-en">Leg strengthening protocol — Joksamri · Eumneungcheon</span></li>
+              <li><span class="t-ko">복부 강화 뜸</span><span class="t-en">Abdominal strengthening moxa</span></li>
+              <li><span class="t-ko">허약 체질 보강점</span><span class="t-en">Supplementing points for weak constitution</span></li>
+            </ul>
+          </div>
+
+          <div class="week-hw">
+            <span>🎯 <span class="t-ko">숙제</span><span class="t-en">Homework</span></span>
+            <p>
+              <span class="t-ko">본인 or 가족 1주일 적용 기록</span>
+              <span class="t-en">Apply to yourself or family for 1 week &amp; keep a record</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- ── WEEK 4 ── -->
+        <div class="week-card">
+          <div class="week-tag">
+            <span class="t-ko">Week 4 · 2시간</span>
+            <span class="t-en">Week 4 · 2 Hours</span>
+          </div>
+          <h3>
+            <span class="t-ko">🔥 종합 적용 &amp; 평가</span>
+            <span class="t-en">🔥 Comprehensive Application &amp; Assessment</span>
+          </h3>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">복습 테스트 30분</span>
+              <span class="t-en">Review Test — 30 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">안전 수칙 구두 점검</span><span class="t-en">Verbal safety protocol check</span></li>
+              <li><span class="t-ko">혈자리 위치 확인</span><span class="t-en">Acupuncture point location quiz</span></li>
+            </ul>
+          </div>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">실전 케이스 실습 60분</span>
+              <span class="t-en">Clinical Case Practice — 60 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">케이스 선택</span><span class="t-en">Select a real-life case</span></li>
+              <li><span class="t-ko">프로토콜 구성</span><span class="t-en">Build a full treatment protocol</span></li>
+              <li><span class="t-ko">발표 및 피드백</span><span class="t-en">Present &amp; receive instructor feedback</span></li>
+            </ul>
+          </div>
+
+          <div class="week-section">
+            <div class="week-section-label">
+              <span class="t-ko">비전 나눔 30분</span>
+              <span class="t-en">Vision Sharing — 30 min</span>
+            </div>
+            <ul class="week-items">
+              <li><span class="t-ko">K-MOXA 201 안내</span><span class="t-en">Introduction to K-MOXA 201</span></li>
+              <li><span class="t-ko">선교 적용 사례</span><span class="t-en">Mission &amp; community application stories</span></li>
+              <li><span class="t-ko">수료증 안내</span><span class="t-en">Certificate ceremony &amp; next steps</span></li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /weeks-grid -->
+    </div>
+  </section>
+
+  <!-- CERTIFICATION -->
+  <section class="cert" id="cert">
+    <div class="container">
+      <div class="section-label">Completion</div>
+      <h2 class="section-title">Earn Your<br/><span>Certification</span></h2>
+      <p class="section-lead">수료 기준을 충족하면 공식 수료증을 받게 됩니다.</p>
+      <div class="cert-grid">
+        <div>
+          <ul class="cert-requirements">
+            <li><div class="cert-check">✓</div><span>출석 75% 이상 — Attendance at least 75%</span></li>
+            <li><div class="cert-check">✓</div><span>기본 혈자리 위치 숙지 — Know the basic acupuncture points</span></li>
+            <li><div class="cert-check">✓</div><span>안전 수칙 이해 — Understand all safety protocols</span></li>
+            <li><div class="cert-check">✓</div><span>실습 참여 완료 — Complete all hands-on sessions</span></li>
+          </ul>
+        </div>
+        <div class="cert-badge-wrap">
+          <div class="cert-badge">
+            <div class="badge-icon">📜</div>
+            <h3>Upon Completion</h3>
+            <p>Certified<br/>K-MOXA 101<br/>Completion</p>
+            <div class="next-level">
+              Ready to advance?
+              <strong>K-MOXA 201 →</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="enroll">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-label">Join the Class</div>
+        <h2 class="section-title">Learn · Heal · <span>Share</span></h2>
+        <p class="cta-lead">
+          배우고, 치유하고, 나누세요 — 뜸의 힘을!<br/>
+          Ready to bring the power of K-MOXA into your home and community? Sign up to get class information and next session dates.
+        </p>
+        <form class="cta-form" onsubmit="handleEnroll(event)">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit" class="btn-red">Get Started</button>
+        </form>
+        <p class="cta-note">We'll send you the next session schedule and enrollment details.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">K<span>-PAB</span></div>
+    <p>Natural MOXA Treatment · 케이팹 자연 뜸 테라피</p>
+    <br/>
+    <p>Inspired by the teachings of <strong>김남수</strong></p>
+    <p style="margin-top:0.5rem"><a href="http://k-treatment.com">k-treatment.com</a> &nbsp;·&nbsp; K-PAB Class</p>
+    <p style="margin-top:1rem;font-size:0.75rem;opacity:0.5">© 2026 K-PAB Natural MOXA Treatment. All rights reserved.</p>
+  </footer>
+
+  <script>
+    /* ── Language Toggle ── */
+    const courseSection = document.getElementById('course');
+
+    function setLang(lang) {
+      const toggle = document.getElementById('langToggle');
+      const btnKo  = document.getElementById('btnKo');
+      const btnEn  = document.getElementById('btnEn');
+      const ind    = document.getElementById('langIndicator');
+
+      if (lang === 'en') {
+        courseSection.classList.add('lang-en');
+        btnKo.classList.remove('active');
+        btnEn.classList.add('active');
+        // Slide indicator to EN button
+        ind.style.transform = `translateX(${btnEn.offsetLeft - btnKo.offsetLeft}px)`;
+        ind.style.width = btnEn.offsetWidth + 'px';
+      } else {
+        courseSection.classList.remove('lang-en');
+        btnKo.classList.add('active');
+        btnEn.classList.remove('active');
+        ind.style.transform = 'translateX(0)';
+        ind.style.width = btnKo.offsetWidth + 'px';
+      }
+    }
+
+    // Initialize indicator size on load
+    window.addEventListener('load', () => {
+      const btnKo = document.getElementById('btnKo');
+      const ind   = document.getElementById('langIndicator');
+      ind.style.width  = btnKo.offsetWidth + 'px';
+    });
+
+    /* ── Enroll form ── */
+    function handleEnroll(e) {
+      e.preventDefault();
+      const input = e.target.querySelector('input');
+      const btn   = e.target.querySelector('button');
+      btn.textContent = '✓ Sent!';
+      btn.style.background = '#2d7a4f';
+      input.value = '';
+      setTimeout(() => {
+        btn.textContent = 'Get Started';
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    /* ── Smooth scroll (offset for fixed nav) ── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 70;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
