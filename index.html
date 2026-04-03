@@ -433,21 +433,17 @@
       pointer-events: none;
     }
 
-    /* Language content switching */
-    .t-ko, .t-en {
-      transition: opacity 0.3s ease;
-    }
-    .t-en { display: none; opacity: 0; }
-    .t-ko { display: block; opacity: 1; }
+    /* Language content switching — Korean default */
+    .t-ko { display: block; }
+    .t-en { display: none; }
+    span.t-ko { display: inline; }
+    span.t-en { display: none; }
 
     /* When English is active */
-    .lang-en .t-ko { display: none; opacity: 0; }
-    .lang-en .t-en { display: block; opacity: 1; }
-
-    /* For inline spans (week tags, section labels) */
-    span.t-ko, span.t-en { display: inline; }
-    .lang-en span.t-ko { display: none; }
-    .lang-en span.t-en { display: inline; }
+    .lang-en .t-ko { display: none !important; }
+    .lang-en .t-en { display: block !important; }
+    .lang-en span.t-ko { display: none !important; }
+    .lang-en span.t-en { display: inline !important; }
 
     /* Crossfade animation on switch */
     .weeks-grid { position: relative; }
@@ -586,6 +582,7 @@
       flex-shrink: 0;
     }
     .cert-requirements li span { font-size: 0.9rem; color: var(--text); font-weight: 500; }
+    .cert-requirements li span small { font-size: 0.8rem; color: var(--pink1); font-weight: 400; }
     .cert-badge-wrap { display: flex; justify-content: center; }
     .cert-badge {
       background: linear-gradient(135deg, var(--red) 0%, #6b1629 100%);
@@ -848,7 +845,7 @@
   <!-- ════════════════════════════════════
        COURSE — with KO/EN toggle
   ════════════════════════════════════ -->
-  <section class="course" id="course">
+  <section class="course lang-en" id="course">
     <div class="container">
 
       <!-- Section header -->
@@ -860,8 +857,8 @@
         <!-- ── Language Toggle ── -->
         <div class="lang-toggle" id="langToggle">
           <div class="lang-toggle-indicator" id="langIndicator"></div>
-          <button class="lang-btn active" id="btnKo" onclick="setLang('ko')">한국어</button>
-          <button class="lang-btn" id="btnEn" onclick="setLang('en')">English</button>
+          <button class="lang-btn active" id="btnEn" onclick="setLang('en')">English</button>
+          <button class="lang-btn" id="btnKo" onclick="setLang('ko')">한국어</button>
         </div>
       </div>
       <p class="section-lead" style="margin-top:1rem">
@@ -1098,14 +1095,14 @@
     <div class="container">
       <div class="section-label">Completion</div>
       <h2 class="section-title">Earn Your<br/><span>Certification</span></h2>
-      <p class="section-lead">수료 기준을 충족하면 공식 수료증을 받게 됩니다.</p>
+      <p class="section-lead">Meet the requirements below to receive your official certificate.<br/><small style="opacity:0.7">수료 기준을 충족하면 공식 수료증을 받게 됩니다.</small></p>
       <div class="cert-grid">
         <div>
           <ul class="cert-requirements">
-            <li><div class="cert-check">✓</div><span>출석 75% 이상 — Attendance at least 75%</span></li>
-            <li><div class="cert-check">✓</div><span>기본 혈자리 위치 숙지 — Know the basic acupuncture points</span></li>
-            <li><div class="cert-check">✓</div><span>안전 수칙 이해 — Understand all safety protocols</span></li>
-            <li><div class="cert-check">✓</div><span>실습 참여 완료 — Complete all hands-on sessions</span></li>
+            <li><div class="cert-check">✓</div><span>Attendance at least 75% <small>· 출석 75% 이상</small></span></li>
+            <li><div class="cert-check">✓</div><span>Know the basic acupuncture points <small>· 기본 혈자리 위치 숙지</small></span></li>
+            <li><div class="cert-check">✓</div><span>Understand all safety protocols <small>· 안전 수칙 이해</small></span></li>
+            <li><div class="cert-check">✓</div><span>Complete all hands-on sessions <small>· 실습 참여 완료</small></span></li>
           </ul>
         </div>
         <div class="cert-badge-wrap">
@@ -1166,23 +1163,22 @@
         courseSection.classList.add('lang-en');
         btnKo.classList.remove('active');
         btnEn.classList.add('active');
-        // Slide indicator to EN button
-        ind.style.transform = `translateX(${btnEn.offsetLeft - btnKo.offsetLeft}px)`;
+        // EN is first — indicator sits at position 0
+        ind.style.transform = 'translateX(0)';
         ind.style.width = btnEn.offsetWidth + 'px';
       } else {
         courseSection.classList.remove('lang-en');
         btnKo.classList.add('active');
         btnEn.classList.remove('active');
-        ind.style.transform = 'translateX(0)';
+        // 한국어 is second — slide indicator right
+        ind.style.transform = `translateX(${btnKo.offsetLeft - btnEn.offsetLeft}px)`;
         ind.style.width = btnKo.offsetWidth + 'px';
       }
     }
 
-    // Initialize indicator size on load
+    // Initialize with English on load
     window.addEventListener('load', () => {
-      const btnKo = document.getElementById('btnKo');
-      const ind   = document.getElementById('langIndicator');
-      ind.style.width  = btnKo.offsetWidth + 'px';
+      setLang('en');
     });
 
     /* ── Enroll form ── */
